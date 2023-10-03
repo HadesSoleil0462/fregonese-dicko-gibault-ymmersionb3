@@ -9,6 +9,7 @@
   "author": "Alexandre Gibault Tom Fregonese",
   "license": "ISC",
   "dependencies": {
+    "cors": "^2.8.5",
     "epxress": "^0.0.1-security"
   },
   "devDependencies": {
