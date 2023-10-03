@@ -4,13 +4,13 @@
   "description": "Flowers online store",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "supervisor app.js"
   },
   "author": "Alexandre Gibault Tom Fregonese",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "epxress": "^0.0.1-security"
+    "express": "^4.18.2"
   },
   "devDependencies": {
     "supervisor": "^0.12.0"

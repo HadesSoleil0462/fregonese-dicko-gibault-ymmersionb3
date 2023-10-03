@@ -6,7 +6,7 @@ const data = require("../data.json");
  * @param {*} res All the flowers
  */
 exports.getFlowers = (req, res) => {
-    const id = parseInt(req.params.id);
+    //const id = parseInt(req.params.id);
     const flowers = data.flowers;
 
     res.json(flowers);
@@ -17,15 +17,10 @@ exports.getFlowers = (req, res) => {
  * @param {*} req Name of a flower
  * @param {*} res flowers corresponding to the name
  */
-exports.getFlowersByName = async (req, res) => {
-    const name = req.params.name;
+exports.getFlowersByName = (req, res) => {
+    const name = req.params.name.toLowerCase();
     const flowers = data.flowers;
-    let flowersByNames = [];
-
-    for(let flower of flowers){
-        if(flower.name === name)
-            flowersByNames.push(flower);
-    }
+    const flowersByNames = flowers.filter(flower => flower.FlowerName.toLowerCase() === name);
 
     if(flowersByNames.length === 0){
         res.status(404).send({message : "Flowers not found"});
@@ -35,4 +30,13 @@ exports.getFlowersByName = async (req, res) => {
             flowersByNames
         });
     }
+};
+
+/**
+ * Add one flower to the roster.
+ * @param {*} req 
+ * @param {*} res 
+ */
+exports.addFlower = (req, res) => {
+
 };
