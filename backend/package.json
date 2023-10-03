@@ -1,0 +1,17 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "Flowers online store",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Alexandre Gibault Tom Fregonese",
+  "license": "ISC",
+  "dependencies": {
+    "epxress": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "supervisor": "^0.12.0"
+  }
+}
