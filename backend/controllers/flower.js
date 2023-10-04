@@ -8,7 +8,7 @@ const data = require("../data.json");
 exports.getFlowers = (req, res) => {
     const flowers = data.flowers;
 
-    res.json(flowers);
+    res.send(flowers);
 };
 
 /**
@@ -24,10 +24,7 @@ exports.getFlowerById = (req, res) => {
     if(!flower){
         res.status(404).send({message : "Flower not found"});
     } else {
-        res.status(200).json({
-            message : "Flower found successfully",
-            flower
-        });
+        res.status(200).send(flower);
     }
 };
 
@@ -44,10 +41,7 @@ exports.getFlowersByName = (req, res) => {
     if(flowersByName.length === 0){
         res.status(404).send({message : "Flowers not found"});
     } else {
-        res.status(200).json({
-            message: "Flowers found successfully",
-            flowersByName
-        });
+        res.status(200).send(flowersByName);
     }
 };
 

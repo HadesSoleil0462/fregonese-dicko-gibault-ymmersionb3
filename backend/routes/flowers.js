@@ -6,12 +6,12 @@ const controllers = require("../controllers/flower");
 router.get("/flowers", controllers.getFlowers);
 
 //Route to get a flower by the id
-router.get("/flower/:id", controllers.getFlowerById);
+router.get("/flowers/:id", controllers.getFlowerById);
 
 //Route to get all the flowers by the name
 router.get("/flowers/:name", controllers.getFlowersByName);
 
 //Route to add one flower to the roster.
-router.post("/addflower", controllers.addFlower);
+router.post("/addflowers", controllers.addFlower);
 
 module.exports = router;
