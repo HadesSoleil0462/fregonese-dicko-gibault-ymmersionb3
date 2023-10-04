@@ -62,14 +62,13 @@ exports.addFlower = (req, res) => {
         const maxId = flowers.reduce(
             (previous, current) => (previous && previous.id > current.id) ? previous : current
         );
-        const flower = {
-            "id" : maxId.id + 1,
-            "FlowerName" : req.body.FlowerName,
-            "Type" : req.body.Type,
-            "Tips" : req.body.Tips,
-            "Pic_URL" : req.body.Pic_URL,
-            "Price" : Number(req.body.Price)
-        };
+        const flower = {};
+        flower.id = maxId.id + 1;
+        flower.FlowerName = req.body.FlowerName;
+        flower.Type = req.body.Type;
+        flower.Tips = req.body.Tips;
+        flower.Pic_URL = req.body.Pic_URL;
+        flower.Price = Number(req.body.Price);
         flowers.push(flower);
         res.status(201).json({message : "Flower successfully created and added"});
     } else {
