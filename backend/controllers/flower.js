@@ -40,14 +40,14 @@ exports.getFlowerById = (req, res) => {
 exports.getFlowersByName = (req, res) => {
     const name = req.params.name.toLowerCase();
     const flowers = data.flowers;
-    const flowersByNames = flowers.filter(flower => flower.FlowerName === name);
+    const flowersByName = flowers.filter(flower => flower.FlowerName === name);
 
-    if(flowersByNames.length === 0){
+    if(flowersByName.length === 0){
         res.status(404).send({message : "Flowers not found"});
     } else {
         res.status(200).json({
             message: "Flowers found successfully",
-            flowersByNames
+            flowersByName
         });
     }
 };
@@ -62,9 +62,23 @@ exports.addFlower = (req, res) => {
     const admin = users.find(a => a.User === users.User);
     const password = req.body.password;
 
+    //If user is an administrator
     if (admin && admin.password === password) {
         const flowers = data.flowers;
-        
+        //Get the max id flower
+        const maxId = flowers.reduce(
+            (previous, current) => (previous && previous.id > current.id) ? previous : current
+        );
+        const flower = {
+            "id" : maxId.id + 1,
+            "FlowerName" : req.body.FlowerName,
+            "Type" : req.body.Type,
+            "Tips" : req.body.Tips,
+            "Pic_URL" : req.body.Pic_URL,
+            "Price" : Number(req.body.Price)
+        };
+        flowers.push(flower);
+        res.status(201).json({message : "Flower successfully created and added"});
     } else {
         res.status(511).send({message : "Admin only"});
     }
