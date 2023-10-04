@@ -9,7 +9,7 @@ router.get("/flowers", controllers.getFlowers);
 router.get("/flowers/:id", controllers.getFlowerById);
 
 //Route to get all the flowers by the name
-router.get("/flowers/:name", controllers.getFlowersByName);
+router.get("/flowers/names/:name", controllers.getFlowersByName);
 
 //Route to add one flower to the roster.
 router.post("/flowers", controllers.addFlower);
