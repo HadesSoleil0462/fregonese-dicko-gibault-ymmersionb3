@@ -1,9 +1,9 @@
+import { Link } from 'react-router-dom';
 import '../styles/Flower-card.css'
-
-const FlowerCard = ({image, title, price}) => {
+const FlowerCard = ({id, image, title, price}) => {
 
     return <div className="flower-card">
-        <img src={image} alt="image de la fleur" />
+        <a href={`/store:${id}`}><img src={image} alt="image de la fleur" /></a>
         <div>
             <h4>{title}</h4>
             <p>{price} €</p>

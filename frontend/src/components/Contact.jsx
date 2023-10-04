@@ -1,9 +1,10 @@
 import tulips from '../assets/tulips-4026273_1280.jpg'
+import '../styles/Contact.css'
 const Contact = () => {
 
-    return<div>
+    return<div className='contact'>
+        <h3>Formulaire de contact</h3>
         <form>
-            <legend>Formulaire de contact</legend>
             <div className='infos'>
                 <label htmlFor='mail'>E-mail</label>
                 <input type="email" name="mail" id="mail" />
@@ -14,7 +15,7 @@ const Contact = () => {
             </div>
             <div className='infos'>
                 <label htmlFor="message">Message</label>
-                <input type="text" name="message" id="message" />
+                <textarea id='message' cols='25' rows='10'></textarea>
             </div>
             <button type="submit">Envoyer</button>
         </form>
