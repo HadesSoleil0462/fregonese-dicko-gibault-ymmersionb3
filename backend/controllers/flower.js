@@ -6,7 +6,6 @@ const data = require("../data.json");
  * @param {*} res All the flowers
  */
 exports.getFlowers = (req, res) => {
-    //const id = parseInt(req.params.id);
     const flowers = data.flowers;
 
     res.json(flowers);
