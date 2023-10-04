@@ -13,6 +13,26 @@ exports.getFlowers = (req, res) => {
 };
 
 /**
+ * Get a flower by it's id.
+ * @param {*} req flower id
+ * @param {*} res flower corresponding to the id
+ */
+exports.getFlowerById = (req, res) => {
+    const id = parseInt(req.params.id);
+    const flowers = data.flowers;
+    const flower = flowers.find(f => f.id === id);
+
+    if(!flower){
+        res.status(404).send({message : "Flower not found"});
+    } else {
+        res.status(200).json({
+            message : "Flower found successfully",
+            flower
+        });
+    }
+};
+
+/**
  * Get all the flowers by the name.
  * @param {*} req Name of a flower
  * @param {*} res flowers corresponding to the name
@@ -26,7 +46,7 @@ exports.getFlowersByName = (req, res) => {
         res.status(404).send({message : "Flowers not found"});
     } else {
         res.status(200).json({
-            message: "Flowers found succeffully",
+            message: "Flowers found successfully",
             flowersByNames
         });
     }
