@@ -40,7 +40,7 @@ exports.getFlowerById = (req, res) => {
 exports.getFlowersByName = (req, res) => {
     const name = req.params.name.toLowerCase();
     const flowers = data.flowers;
-    const flowersByNames = flowers.filter(flower => flower.FlowerName.toLowerCase() === name);
+    const flowersByNames = flowers.filter(flower => flower.FlowerName === name);
 
     if(flowersByNames.length === 0){
         res.status(404).send({message : "Flowers not found"});
