@@ -58,5 +58,14 @@ exports.getFlowersByName = (req, res) => {
  * @param {*} res 
  */
 exports.addFlower = (req, res) => {
+    const users = data.admins;
+    const admin = users.find(a => a.User === users.User);
+    const password = req.body.password;
 
+    if (admin && admin.password === password) {
+        const flowers = data.flowers;
+        
+    } else {
+        res.status(511).send({message : "Admin only"});
+    }
 };
