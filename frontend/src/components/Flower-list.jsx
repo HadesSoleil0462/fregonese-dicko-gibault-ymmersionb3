@@ -8,7 +8,7 @@ const FlowerList = () => {
     return <div className='flowers'>
         {
             datas.map(item => {
-                return <FlowerCard image={item.Pic_URL} title={item.FlowerName + " " + item.Type} price={item.Price} />
+                return <FlowerCard id={item.ID} image={item.Pic_URL} title={item.FlowerName + " " + item.Type} price={item.Price} />
             })
         }
     </div>

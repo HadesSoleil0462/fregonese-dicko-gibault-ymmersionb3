@@ -7,6 +7,8 @@ import Cart from './components/Cart';
 import Error from './pages/Error';
 import Filter from './components/Filter';
 import FlowerList from './components/Flower-list';
+import About from './pages/About';
+import FlowerDetail from './components/Flower';
 
 function App() {
 
@@ -18,8 +20,9 @@ function App() {
         <Route index element={<Main />} />
           <Route path='/contact' element={<Contact />} />
           <Route path='/cart' element={<Cart />} />
-          <Route path='/filter' element={<Filter />} />
-          <Route path='/boutique' element={<FlowerList />} />
+          <Route path='/about' element={<About />} />
+          <Route path='/store' element={<FlowerList />} />
+          <Route path='/store/:id' element={<FlowerDetail />} />
           <Route path='/*' element={<Error />} />
         </Route>
       </Routes>
