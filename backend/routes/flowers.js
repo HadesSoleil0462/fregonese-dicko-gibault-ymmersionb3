@@ -8,14 +8,10 @@ router.get("/flowers", (req, res) => {
 });
 
 //Route to get a flower by the id
-router.get("/flowers/:id", (req, res) => {
-    controllers.getFlowerById(req, res)
-});
+router.get("/flowers/:id", controllers.getFlowerById);
 
 //Route to get all the flowers by the name
-router.get("/flowers/:name", (req, res) => {
-    controllers.getFlowersByName(req, res)
-});
+router.get("/flowers/names/:name", controllers.getFlowersByName);
 
 //Route to add one flower to the roster.
 router.post("/flowers", controllers.addFlower);
