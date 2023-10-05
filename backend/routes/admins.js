@@ -6,6 +6,6 @@ const controllers = require("../controllers/admin");
 router.post("/admin/login", controllers.loginAdmin);
 
 //Route to add a flower while logged as an admin
-router.post("/addflowers", controllers.addFlower);
+router.post("/admin/addflower", controllers.addFlower);
 
 module.exports = router;
