@@ -1,0 +1,44 @@
+/* CSS pour la page d'administration */
+.admin-page {
+    width: 80%;
+    margin: 0 auto;
+    padding: 30px;
+    border-radius: 5px;
+    margin-top: 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-page h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+  
+  .admin-page div label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .admin-page div input[type="text"],
+  .admin-page div input[type="number"],
+  .admin-page div textarea {
+    width: 90%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  .admin-page button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    padding: 10px 20px;
+    cursor: pointer;
+  }
+  
+  .admin-page button:hover {
+    background-color: #0056b3;
+  }
+  
