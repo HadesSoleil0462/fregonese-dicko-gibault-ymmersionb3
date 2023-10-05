@@ -3,7 +3,7 @@ const data = require("../data.json");
 
 /**
  * log in an administrator
- * @param {*} req 
+ * @param {*} req admin user and password
  * @param {*} res 
  */
 exports.loginAdmin = (req, res) => {
