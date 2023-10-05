@@ -26,8 +26,9 @@ exports.loginAdmin = (req, res) => {
             //redirect to the page where an admin can add an article to the roster
             res.redirect("/addflowers");
         }
-        response.end();
+        res.end();
     } else {
         res.status(511).send("Incorrect username and/or password");
+        res.end();
     }
 };
