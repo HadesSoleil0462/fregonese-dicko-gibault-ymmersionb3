@@ -7,6 +7,7 @@ import Filter from './Filter'
 const FlowerList = () => {
 
     const flowers = Flowers()
+    console.log(Flowers())
     return <div>
         <div className='flowers'>
         {

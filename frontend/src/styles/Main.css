@@ -50,3 +50,24 @@
     margin: 50px 0;
     text-align: justify;
 }
+.caroussel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 10%;
+}
+#flowers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+.caroussel img {
+    width: 550px;
+    height: 550px;
+}

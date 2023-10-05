@@ -1,20 +1,12 @@
-import Slider from 'react-slick'
+import img1 from '../assets/flower-3140492_1280.jpg'
+import img2 from '../assets/flowers-19830_1280.jpg'
+import img3 from '../assets/rose-320868_1280.jpg'
 import flower from '../assets/flowers-7030589_1920.jpg'
-import lilas from '../assets/lilacs-1914124_1280.jpg'
-import BestSeller from '../components/BestSeller'
 import '../styles/Main.css'
 
 const Main = () => {
 
     return <div className='main'>
-        <div className='main-img'>
-            <button className='main-button'>Visiter la boutique</button>
-        </div>
-        <img src={flower} alt='flowers' />
-        <div>
-            <h2> C'est parti !</h2>
-            <p>Ce que vous attendiez</p>
-        </div>
         <section className='about'>
             <div>
                 <h2>Flowers store</h2>
@@ -30,6 +22,15 @@ const Main = () => {
             <p>Venez nous rendre visite</p>
             <p>Lundi - Vendredi: 09h00 - 21h00</p>
             <p>Samedi et Dimanche : 10h00 - 22h00</p>
+        </section>
+        <section className='caroussel'>
+            <h2>Nos fleurs vous feront rever</h2>
+            <div id='flowers'>
+                <img src={img1} alt='fleur' />
+                <img src={img2} alt='fleur' />
+                <img src={img3} alt='fleur' />
+                <img src={flower} alt='fleur' />
+            </div>
         </section>
     </div>
 }

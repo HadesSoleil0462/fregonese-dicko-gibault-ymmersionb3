@@ -6,11 +6,12 @@ import Layout from './layout/Layout';
 import Cart from './components/Cart';
 import Error from './pages/Error';
 import Filter from './components/Filter';
-import FlowerList from './components/Flower-list';
 import About from './pages/About';
+import LoginPage from './components/Connection';
 import FlowerDetail from './components/Flower';
-import CheckoutForm from './pages/Paiement';
-
+import AdminPage from './pages/AdminPage';
+import ClientPage from './pages/ClientPage';
+import Inscription from './pages/Inscription';
 function App() {
 
   
@@ -19,13 +20,18 @@ function App() {
       <Routes>
         <Route path='/' element={<Layout />}>
         <Route index element={<Main />} />
-          <Route path='/contact' element={<Contact />} />
-          <Route path='/cart' element={<Cart />} />
-          <Route path='/about' element={<About />} />
-          <Route path='/store' element={<Filter />} />
-          <Route path='/store/:id' element={<FlowerDetail />} />
-          <Route path='/*' element={<Error />} />
-          <Route path='/checkout' element={<CheckoutForm />} />
+          <Route path='/flowers-store/contact' element={<Contact />} />
+          <Route path='/flowers-store/cart' element={<Cart />} />
+          <Route path='/flowers-store/about' element={<About />} />
+          <Route path='/flowers-store/store' element={<Filter />} />
+          <Route path='/flowers-store/store/:id' element={<FlowerDetail />} />
+          <Route path='/flowers-store/*' element={<Error />} />
+          <Route path='/flowers-store/inscription' element={<Inscription />} />
+          <Route path='/flowers-store/connexion' element={<ClientPage />} />
+        </Route>
+
+        <Route path='/admin' element={<LoginPage />} >
+          <Route path='/admin/add-flower' element={<AdminPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

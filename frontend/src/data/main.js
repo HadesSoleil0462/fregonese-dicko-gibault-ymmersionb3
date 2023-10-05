@@ -33,3 +33,17 @@ export const Flower = ({id}) => {
     },[id] )
     return flower;
 }
+
+export function trouverSimilitudes(tableau1, tableau2) {
+    const similitudes = [];
+  
+    for (const element1 of tableau1) {
+      if (tableau2.includes(element1) && !similitudes.includes(element1)) {
+        similitudes.push(element1);
+      }
+    }
+  
+    return similitudes;
+  }
+
+  

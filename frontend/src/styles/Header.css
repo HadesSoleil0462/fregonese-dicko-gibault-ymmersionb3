@@ -1,7 +1,8 @@
+
 header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
@@ -20,7 +21,7 @@ header nav ul li {
     width: 220px;
     height: 75px;
     position: relative;
-    margin-right: 50%;
+    margin-left: 10%;
 }
 .panier {
     display: flex;

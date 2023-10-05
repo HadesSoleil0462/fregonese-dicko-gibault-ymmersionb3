@@ -1,17 +1,23 @@
+
 import React, { useState } from 'react';
-import '../styles/Connection.css'
+import '../styles/ClientPage.css'
 import { Link } from 'react-router-dom';
 
-const LoginPage = () => {
+const ClientPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
+  let url = '/admin'
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
 
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
+  };
+
+  const handleLogin = () => {
+    url = '/admin/add-flower'
   };
 
   return (
@@ -37,13 +43,15 @@ const LoginPage = () => {
             onChange={handlePasswordChange}
           />
         </div>
-        <Link to="/admin/add-flower" id='btn'>
+        <div>
+        <a href='/flowers-store/inscription'>Pas encore inscrit ? Inscrivez-vous</a>
+        </div>
+        <button id='btn'>
         Soumettre
-        </Link>
+        </button>
       </form>
     </div>
     </div>
   );
 };
-
-export default LoginPage;
+export default ClientPage;

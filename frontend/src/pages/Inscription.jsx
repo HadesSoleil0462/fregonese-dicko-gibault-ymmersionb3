@@ -1,11 +1,14 @@
+
 import React, { useState } from 'react';
-import '../styles/Connection.css'
+import '../styles/ClientPage.css'
 import { Link } from 'react-router-dom';
 
-const LoginPage = () => {
+const Inscription = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [confirmPassword, setConfirmPassword] = useState('')
 
+  let url = '/admin'
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -13,11 +16,13 @@ const LoginPage = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
+  const handleConfirmPasswordChange = (e) => {
+    setConfirmPassword(e.target.value);
+  };
   return (
     <div className='login'>
         <div className="login-page">
-      <h2>Connexion</h2>
+      <h2>Inscription</h2>
       <form>
         <div className="form-group">
           <label htmlFor="email">Email :</label>
@@ -37,13 +42,21 @@ const LoginPage = () => {
             onChange={handlePasswordChange}
           />
         </div>
-        <Link to="/admin/add-flower" id='btn'>
+        <div className="form-group">
+          <label htmlFor="confirmPassword">Confirmer le mot de passe :</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            value={confirmPassword}
+            onChange={handleConfirmPasswordChange}
+          />
+        </div>
+        <button id='btn'>
         Soumettre
-        </Link>
+        </button>
       </form>
     </div>
     </div>
   );
 };
-
-export default LoginPage;
+export default Inscription;

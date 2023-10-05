@@ -10,7 +10,7 @@ const Contact = () => {
                 <input type="email" name="mail" id="mail" />
             </div>
             <div className='infos'>
-                <label htmlFor='tel'>E-mail</label>
+                <label htmlFor='tel'>Téléphone</label>
                 <input type="tel" name="tel" id="tel" />
             </div>
             <div className='infos'>

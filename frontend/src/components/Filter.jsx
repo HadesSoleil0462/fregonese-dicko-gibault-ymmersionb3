@@ -1,13 +1,16 @@
 import { useEffect, useState } from "react"
 import '../styles/Filter.css'
 import axios from "axios"
-import { Flowers } from "../data/main"
+import { Flowers, trouverSimilitudes } from "../data/main"
 import FlowerCard from "./Flower-card"
+import { useParams } from "react-router"
+import CartLmj from "./CartLmj"
 
 const Filter = () => {
     const api_URL = "http://localhost:8080"
     const [priceFilter, setPriceFilter] = useState("Tous les prix")
     const [typeFilter, setTypeFilter] = useState("Tous les types")
+    const [othersflowers, setOtherFlowers] = useState([])
     const flowers = Flowers()
     const changePrice = (e) => {
         setPriceFilter(e.target.value)
@@ -15,23 +18,55 @@ const Filter = () => {
     const changeType = (e) => {
         setTypeFilter(e.target.value)
     }
-    
-    /*const clickFilter = () => {
-        if (typeFilter === "Tous les types" && priceFilter === "Tous les prix") {
-            // Aucun filtre, afficher toutes les fleurs
-            setFlowers(Flowers());
+
+    const filteredFlowersByName = flowers.filter(e => {
+        return e['FlowerName'].toLowerCase().includes(typeFilter.toLowerCase())
+    })
+
+    const arrayPrice = priceFilter === "Tous les prix" ? flowers : priceFilter.split('-')
+    const sortedPrice = () => {
+        let sortedPriceArray = []
+        if(arrayPrice === flowers){
+            sortedPriceArray = flowers
         } else {
-            const filteredFlowers = Flowers().filter(item => {
-                const priceInRange = priceFilter === "Tous les prix" || item.Price === priceFilter;
-                const typeMatches = typeFilter === "Tous les types" || item.Type === typeFilter;
-                return priceInRange && typeMatches;
-            });
-            setFlowers(filteredFlowers);
+            const min = Number.parseInt(arrayPrice[0])
+            const max = Number.parseInt(arrayPrice[1])
+            sortedPriceArray = flowers.filter(e => {
+                return e.Price >= min && e.Price < max
+            })
+            console.log(sortedPriceArray)
         }
-    }; */
+        return sortedPriceArray
+    }
+    const filteredFlowersByPrice = flowers.filter(e => {
+    })
     
-    return <div>
+    const clickFilter = () => {
+        if(trouverSimilitudes(sortedPrice(), filteredFlowersByName).length === 0){
+            setOtherFlowers(Flowers)
+        } else {
+            setOtherFlowers(trouverSimilitudes(sortedPrice(), filteredFlowersByName))
+        }
+    };
+    const sortCroissant = () => {
+        setOtherFlowers(flowers.sort((a, b) => a - b))
+    }
+    
+    return <div className="list">
+        <CartLmj />
+        <div>
         <div className="filter">
+            <div className="sort">
+                <div className="sort-attributes">
+                    <input type="radio" name="sort" id="croissant" />
+                    <label htmlFor="croissant">Croissant</label>
+                </div>
+                <div className="sort-attributes">
+                    <input type="radio" name="sort" id="decroissant" />
+                    <label htmlFor="decroissant">Décroissant</label>
+                </div>
+                
+            </div>
             <div className="filters">
                 <label htmlFor="price">Prix</label>
                 <select onChange={changePrice} value={priceFilter} name="price" id="price">
@@ -54,15 +89,18 @@ const Filter = () => {
                 </select>
             </div>
             <div>
-                <button>Filter</button>
+                <button onClick={clickFilter}>Filter</button>
             </div>
         </div>
         <div className='flowers'>
         {
-            flowers.map(item => {
+            othersflowers.length === 0 ? flowers.map(item => {
+                return <FlowerCard key={item.id} id={item.id} image={item.Pic_URL} title={item.FlowerName + " " + item.Type} price={item.Price} />
+            }) : othersflowers.map(item => {
                 return <FlowerCard key={item.id} id={item.id} image={item.Pic_URL} title={item.FlowerName + " " + item.Type} price={item.Price} />
             })
         }
+        </div>
     </div>
     </div>
 }
