@@ -1,8 +1,11 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
 const port = 8080;
 const cors = require("cors");
 const flowerRoutes = require("./routes/flowers");
+
+app.use(bodyParser.json({limit: '50mb'}));
 
 app.use(cors({
     origin: '*'
