@@ -11,7 +11,7 @@ app.use(cors({
 }));
 
 app.use(bodyParser.urlencoded({
-    extended: false;
+    extended: false
 }));
 
 app.use(session({
