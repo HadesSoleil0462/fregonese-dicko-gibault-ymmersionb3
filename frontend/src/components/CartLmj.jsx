@@ -44,11 +44,11 @@ useEffect(() => {
           <ul>
             {cartItems.map((item, index) => (
               <div id='des' key={`${item}-${index}`}>
-                {item.name} : {item.value}€
+                {item.name} : {parseFloat(item.value).toFixed(2)}€
               </div>
             ))}
           </ul>
-          <p>Total des achats : {totalPrice} €</p>
+          <p>Total des achats : {totalPrice.toFixed(2)} €</p>
           <div className='valid-cart'>
             <button onClick={clearCart}>Vider</button>
             <a href='/flowers-store/connexion'><button>Valider</button></a>
