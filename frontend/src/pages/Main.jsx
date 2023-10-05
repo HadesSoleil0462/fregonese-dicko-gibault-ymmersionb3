@@ -1,16 +1,20 @@
+import Slider from 'react-slick'
 import flower from '../assets/flowers-7030589_1920.jpg'
 import lilas from '../assets/lilacs-1914124_1280.jpg'
+import BestSeller from '../components/BestSeller'
 import '../styles/Main.css'
 
 const Main = () => {
 
     return <div className='main'>
+        <div className='main-img'>
+            <button className='main-button'>Visiter la boutique</button>
+        </div>
         <img src={flower} alt='flowers' />
         <div>
             <h2> C'est parti !</h2>
             <p>Ce que vous attendiez</p>
         </div>
-        <div className='articles'></div>
         <section className='about'>
             <div>
                 <h2>Flowers store</h2>

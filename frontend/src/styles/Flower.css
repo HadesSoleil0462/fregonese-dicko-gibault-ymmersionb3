@@ -1,0 +1,24 @@
+.flower-detail {
+    margin-left: 15%;
+    margin-right: 10%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 15%;
+    margin-top: 10%;
+}
+.flower-detail .price {
+    position: relative;
+    margin-right: 30%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.price input {
+    padding: 7px;
+}
+.price span {
+    text-transform: capitalize;
+    font-weight: bold;
+}

@@ -9,6 +9,7 @@ import Filter from './components/Filter';
 import FlowerList from './components/Flower-list';
 import About from './pages/About';
 import FlowerDetail from './components/Flower';
+import CheckoutForm from './pages/Paiement';
 
 function App() {
 
@@ -21,9 +22,10 @@ function App() {
           <Route path='/contact' element={<Contact />} />
           <Route path='/cart' element={<Cart />} />
           <Route path='/about' element={<About />} />
-          <Route path='/store' element={<FlowerList />} />
+          <Route path='/store' element={<Filter />} />
           <Route path='/store/:id' element={<FlowerDetail />} />
           <Route path='/*' element={<Error />} />
+          <Route path='/checkout' element={<CheckoutForm />} />
         </Route>
       </Routes>
     </BrowserRouter>

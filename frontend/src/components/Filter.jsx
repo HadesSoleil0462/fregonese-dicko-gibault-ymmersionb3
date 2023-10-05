@@ -1,63 +1,69 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import '../styles/Filter.css'
+import axios from "axios"
+import { Flowers } from "../data/main"
+import FlowerCard from "./Flower-card"
 
 const Filter = () => {
-    const [price, setPrice] = useState("")
-    const [type, setType] = useState("")
-
-    const handleChangeType = (event) => {
-       setType(event.target.value)
-       console.log(type)
+    const api_URL = "http://localhost:8080"
+    const [priceFilter, setPriceFilter] = useState("Tous les prix")
+    const [typeFilter, setTypeFilter] = useState("Tous les types")
+    const flowers = Flowers()
+    const changePrice = (e) => {
+        setPriceFilter(e.target.value)
     }
-    const handleChangePrice = (event) => {
-        setPrice(event.target.value)
-        console.log(price)
-     }
-    return <aside>
-        <div>
-            <div>
-                <p>Filtrer par</p>
+    const changeType = (e) => {
+        setTypeFilter(e.target.value)
+    }
+    
+    /*const clickFilter = () => {
+        if (typeFilter === "Tous les types" && priceFilter === "Tous les prix") {
+            // Aucun filtre, afficher toutes les fleurs
+            setFlowers(Flowers());
+        } else {
+            const filteredFlowers = Flowers().filter(item => {
+                const priceInRange = priceFilter === "Tous les prix" || item.Price === priceFilter;
+                const typeMatches = typeFilter === "Tous les types" || item.Type === typeFilter;
+                return priceInRange && typeMatches;
+            });
+            setFlowers(filteredFlowers);
+        }
+    }; */
+    
+    return <div>
+        <div className="filter">
+            <div className="filters">
+                <label htmlFor="price">Prix</label>
+                <select onChange={changePrice} value={priceFilter} name="price" id="price">
+                    <option defaultChecked value="Tous les prix">Tous les prix</option>
+                    <option value="0-10">0€ - 10€</option>
+                    <option value="10-20">10€ - 20€</option>
+                    <option value="20-30">20€ - 30€</option>
+                    <option value="30-40">30€ - 40€</option>
+                </select>
             </div>
-            <hr />
-            <fieldset>
-                <legend>Prix</legend>
-                <div>
-                    <input type="radio" id="0-5" name="price" />
-                    <label htmlFor="O-5">0€ - 5€</label>
-                </div>
-                <div>
-                    <input type="radio" id="5-10" name="price" />
-                    <label htmlFor="5-10">5€ - 10€</label>
-                </div>
-                <div>
-                    <input type="radio" id="10-20" name="price" />
-                    <label htmlFor="10-20">10€ - 20€</label>
-                </div>
-            </fieldset>
-            <fieldset>
-                <legend>Type</legend>
-                <div>
-                    <input type="radio" id="rosier" name="type" />
-                    <label htmlFor="rosier">Rose</label>
-                </div>
-                <div>
-                    <input type="radio" id="orchidee" name="type" />
-                    <label htmlFor="orchidee">Orchidée</label>
-                </div>
-                <div>
-                    <input type="radio" name="type" id="lys" />
-                    <label htmlFor="lys">Lys</label>
-                </div>
-                <div>
-                    <input type="radio" name="type" id="lilas" />
-                    <label htmlFor="lilas">Lilas</label>
-                </div>
-                <div>
-                    <input type="radio" name="type" id="iris" />
-                    <label htmlFor="iris">Iris</label>
-                </div>
-            </fieldset>
+            <div className="filters">
+                <label htmlFor="type">Type</label>
+                <select onChange={changeType} value={typeFilter} name="type" id="type">
+                    <option defaultChecked value="Tous les types">Tous les types</option>
+                    <option value="iris">Iris</option>
+                    <option value="lilas">Lilas</option>
+                    <option value="rose">Rose</option>
+                    <option value="orchidée">Orchidée</option>
+                    <option value="lys">Lys</option>
+                </select>
+            </div>
+            <div>
+                <button>Filter</button>
+            </div>
         </div>
-    </aside>
+        <div className='flowers'>
+        {
+            flowers.map(item => {
+                return <FlowerCard key={item.id} id={item.id} image={item.Pic_URL} title={item.FlowerName + " " + item.Type} price={item.Price} />
+            })
+        }
+    </div>
+    </div>
 }
 export default Filter;

@@ -3,7 +3,7 @@ import '../styles/Flower-card.css'
 const FlowerCard = ({id, image, title, price}) => {
 
     return <div className="flower-card">
-        <a href={`/store:${id}`}><img src={image} alt="image de la fleur" /></a>
+        <Link to={`/store/${id}`}><img src={image} alt="image de la fleur" /></Link>
         <div>
             <h4>{title}</h4>
             <p>{price} €</p>

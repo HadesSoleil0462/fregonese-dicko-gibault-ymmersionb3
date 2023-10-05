@@ -16,7 +16,7 @@ const Header = () => {
         <Link to='/'><img src={logo} alt='Flowers store' id='logo' /></Link>
         <div className='panier'>
             <Link to='/cart' ><img src={panier} alt='panier' /></Link>
-            <span>0</span>
+            <span>{localStorage.length}</span>
         </div>
     </header>
 } 
