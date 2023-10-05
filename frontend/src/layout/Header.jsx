@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import panier from '../assets/carte.png'
-import logo from '../assets/logo.png'
+import logo from '../assets/B1.png'
 import Cart from '../components/Cart'
 import '../styles/Header.css'
 import { useState, useEffect } from 'react'
@@ -36,16 +36,19 @@ const Header = () => {
                     <li><Link to='/flowers-store/store'>Boutique</Link></li>
                     <li><Link to='/flowers-store/about'>Notre histoire</Link></li>
                     <li><Link to='/flowers-store/contact'>Nous contacter</Link></li>
+                    <li><Link to='/flowers-store/cart'>Panier{`(${localStorage.length})`}</Link></li>
                 </ul>
             </nav>
-            <Link to='/'><img src={logo} alt='Flowers store' id='logo' /></Link>
+            <Link to='/'><h1 id='logo'>FLOWERS STORE</h1></Link>
             {/* <div className='panier'>
                 <Link to='/cart' >
                     <img src={panier} alt='panier' onClick={openCart}/>
                 </Link>
                 <span>{cartItems.length}</span>
                 {isCartOpen && <Cart items={cartItems} onClose={closeCart} />}
-            </div> */}
+            </div>
+            <img src={logo} alt='Flowers store' id='logo' />
+             */}
         </header>
     );
 } 

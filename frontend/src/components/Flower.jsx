@@ -8,6 +8,7 @@ const FlowerDetail = () => {
     const {id} = useParams()
     const [flower, setFlower] = useState({})
     const [quantite, setQuantite] = useState(1)
+    const [message, setMessage] = useState('')
     const changePrice = (event) => {
         const value = event.target.value
         if(value < 0){
@@ -18,7 +19,8 @@ const FlowerDetail = () => {
     }
     const addCart = () => {
         localStorage.setItem(`${flower.FlowerName} ${flower.Type}`, `${quantite * flower.Price}`)
-        console.log(localStorage)
+        setMessage(`Vous avez ajouté ${quantite} ${flower.FlowerName} ${flower.Type} `)
+        window.location.reload()
     }
 
      useEffect(() => {
@@ -34,7 +36,7 @@ const FlowerDetail = () => {
 
     return <div className="flower-detail">
         <div>
-            <img src={flower.Pic_URL} alt="image de la fleur" />
+            <img src={flower.Pic_URL} alt="image de la fleur" className="img" />
             <p>{flower.Tips}</p>
         </div>
         <div className="price">
@@ -43,6 +45,7 @@ const FlowerDetail = () => {
             <label htmlFor="quantité">Quantité</label>
             <input type="number" onChange={changePrice} value={quantite} name="quantite" id="quantite" />
             <button onClick={addCart}>Ajouter</button>
+            {message}
         </div>
 
     </div>

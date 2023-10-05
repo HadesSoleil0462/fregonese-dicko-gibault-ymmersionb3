@@ -26,10 +26,10 @@ const Main = () => {
         <section className='caroussel'>
             <h2>Nos fleurs vous feront rever</h2>
             <div id='flowers'>
-                <img src={img1} alt='fleur' />
-                <img src={img2} alt='fleur' />
-                <img src={img3} alt='fleur' />
-                <img src={flower} alt='fleur' />
+                <img src={img1} className="img" alt='fleur' />
+                <img src={img2} className="img" alt='fleur' />
+                <img src={img3} className="img" alt='fleur' />
+                <img src={flower} className="img" alt='fleur' />
             </div>
         </section>
     </div>

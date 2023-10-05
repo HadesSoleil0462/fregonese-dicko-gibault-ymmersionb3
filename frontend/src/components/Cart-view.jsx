@@ -1,15 +1,16 @@
+import '../styles/Cart-view.css'
 
+const CartView = ({title, price}) => {
 
-const CartView = ({title, quantite, price}) => {
-
+  const removeItem = () => {
+    localStorage.removeItem(title)
+    window.location.reload()
+}
     return <div>
         <li className="cart-item">
-          <div className="item-details">
-            <h2>{title}</h2>
-            <p>Prix : {price * quantite} €</p>
-            <p>Quantité : {quantite}</p>
-          </div>
-          <button className="remove-item">Supprimer</button>
+            <h3>{title}</h3>
+            <em>Total : {price} €</em>
+          <button className="remove-item" onClick={removeItem}>Supprimer</button>
         </li>
     </div>
 

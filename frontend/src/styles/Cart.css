@@ -1,44 +1,11 @@
-/* Panier.css */
-/* CSS pour le panier modal */
-
-.cart-modal {
-  background-color: #fff;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 1000;
+.cart {
+  display: flex;
+  flex-direction: column;
+  
+  margin-top: 5%;
+  margin-bottom: 10%;
 }
-
-.cart-modal h2 {
-  font-size: 24px;
-  margin-bottom: 10px;
-}
-
-.cart-modal ul {
-  list-style: none;
-  padding: 0;
-}
-
-.cart-modal ul li {
-  font-size: 18px;
-  margin-bottom: 5px;
-}
-
-.cart-modal button {
-  background-color: #007bff;
-  color: #fff;
-  border: none;
-  border-radius: 3px;
-  padding: 10px 20px;
-  cursor: pointer;
-  margin-top: 10px;
-}
-
-.cart-modal button:hover {
-  background-color: #0056b3;
+.total {
+  position: relative;
+  margin-left: 33%;
 }
