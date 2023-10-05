@@ -1,16 +1,21 @@
-import datas from '../data/data.json'
+import { useState } from 'react'
+import { Flowers } from '../data/main'
 import FlowerCard from './Flower-card'
 import '../styles/Flower-list.css'
+import Filter from './Filter'
+
 const FlowerList = () => {
 
-    
-
-    return <div className='flowers'>
+    const flowers = Flowers()
+    console.log(Flowers())
+    return <div>
+        <div className='flowers'>
         {
-            datas.map(item => {
-                return <FlowerCard id={item.ID} image={item.Pic_URL} title={item.FlowerName + " " + item.Type} price={item.Price} />
+            flowers.map(item => {
+                return <FlowerCard id={item.ID} key={item.id} id={item.id} image={item.Pic_URL} title={item.FlowerName + " " + item.Type} price={item.Price} />
             })
         }
+    </div>
     </div>
 }
 

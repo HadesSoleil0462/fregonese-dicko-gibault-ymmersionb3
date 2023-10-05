@@ -1,0 +1,11 @@
+.cart {
+  display: flex;
+  flex-direction: column;
+  
+  margin-top: 5%;
+  margin-bottom: 10%;
+}
+.total {
+  position: relative;
+  margin-left: 33%;
+}

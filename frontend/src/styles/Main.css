@@ -1,6 +1,17 @@
 .main {
     margin-top: 70px;
 }
+.main .main-img {
+    height: 100vh;
+    background: center / cover url("../assets/caroussel/roses-2191636_1280.jpg") no-repeat;
+}
+.main .main-img .main-button {
+    background: #F1D145;
+        border-radius: 10px;
+        padding: 10px 20px;
+        color: #fff;
+        text-transform: uppercase;
+}
 .main img {
     width: 100%;
     height: 110vh;
@@ -29,11 +40,6 @@
     text-align: justify;
 }
 .about div button {
-    color: white;
-    background-color: #5A945B;
-    border: #5A945B solid 1px;
-    border-radius: 5px;
-    padding: 10px;
     margin-top: 20px;
 }
 .horaires {
@@ -43,4 +49,25 @@
     justify-content: center;
     margin: 50px 0;
     text-align: justify;
+}
+.caroussel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 10%;
+}
+#flowers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+.caroussel img {
+    width: 550px;
+    height: 550px;
 }

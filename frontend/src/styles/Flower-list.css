@@ -2,7 +2,9 @@
 .flowers {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
+    gap: 5%;
     align-items: stretch;
     margin-left: 8%;
+    margin-top: 10%;
+    margin-bottom: 15%;
 }

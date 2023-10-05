@@ -1,10 +1,13 @@
+
 header {
     display: flex;
+    background-color: antiquewhite;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     flex-wrap: wrap;
     align-items: center;
     width: 100%;
+    gap: 18%;
     margin: 0;
 }
 header nav ul {
@@ -16,18 +19,15 @@ header nav ul {
 header nav ul li {
     list-style: none;
 }
-#logo {
-    width: 220px;
-    height: 75px;
-    position: relative;
-    margin-right: 50%;
-}
 .panier {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     margin-right: 25px;
+}
+#logo {
+    color: black;
 }
 .panier span {
     font-size: 1.3em;
