@@ -7,7 +7,9 @@
 - [Installation](#installation)
 
 ## Description : 
-...
+Ce projet d'Ymmersion consiste en la création d'une boutique de e-commerce qui vends des fleurs. 
+###Pitch : 
+Fondée avec amour, Flowers Store est née de la passion pour la nature et le désir de partager la beauté des fleurs avec le monde. Notre équipe dévouée et talentueuse de fleuristes s'efforce de créer des arrangements floraux exceptionnels qui évoquent l'émotion et racontent des histoires.
 
 ## Technologies utilisées
 
