@@ -12,7 +12,7 @@ const FlowerList = () => {
         <div className='flowers'>
         {
             flowers.map(item => {
-                return <FlowerCard id={item.ID} key={item.id} id={item.id} image={item.Pic_URL} title={item.FlowerName + " " + item.Type} price={item.Price} />
+                return <FlowerCard id={item.ID} key={item.id} image={item.Pic_URL} title={item.FlowerName + " " + item.Type} price={item.Price} />
             })
         }
     </div>
