@@ -2,7 +2,7 @@
 
 <br>
 
-## Table des matières
+## Table des matières : 
 
 - [Description](#Description)
      - [Pitch](#Pitch)
@@ -17,9 +17,9 @@
 
 ## Description : 
 Ce projet d'Ymmersion vise à constituer un jeu de données et développer une application web de e-commerce spécialisée dans la vente des fleurs. 
-### Pitch : 
+### Pitch 
 Fondée avec amour, Flowers Store est née de la passion pour la nature et le désir de partager la beauté des fleurs avec le monde. Notre équipe dévouée et talentueuse de fleuristes s'efforce de créer des arrangements floraux exceptionnels qui évoquent l'émotion et racontent des histoires.
-### Fonctionnalités techniques : 
+### Fonctionnalités techniques 
 Sur le site il devra être possible de : 
 - Gérer le panier utilisateur avec le LocalStorage dans l’application ; 
 - Filtrer les fleurs par nom, saison et prix (cumulables) ; 
@@ -32,7 +32,7 @@ Sur le site il devra être possible de :
 
 <br>
 
-## Technologies utilisées
+## Technologies utilisées : 
 
 - React
 - Node.js
@@ -42,13 +42,13 @@ Sur le site il devra être possible de :
 
 ### Installation
 
-1. Cloner le dépôt :
+1. Cloner le dépôt 
    ```bash
    git clone https://github.com/HadesSoleil0462/fregonese-dicko-gibault-ymmersionb3.git
 
 <br>
 
-2. Frontend :
+2. Frontend 
 
     - pour entrer dans le dossier frontend
       ```bash 
@@ -64,7 +64,7 @@ Sur le site il devra être possible de :
 
 <br>
 
-3. Backend :
+3. Backend 
 
     - pour entrer dans le dossier backend
       ```bash 
