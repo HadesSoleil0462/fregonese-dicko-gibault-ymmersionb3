@@ -8,16 +8,16 @@ const bcrypt = require("bcrypt");
  * @param {*} req customer email and password
  * @param {*} res 
  */
-exports.loginCustomer = (req, res) => {
+exports.loginCustomer = async (req, res) => {
     //Capture user inputs
     const userEmail = req.body.email;
-    const password = req.body.password;
+    const password = await bcrypt(req.body.password, 10);
 
     //If inputs are not empty
     if (userEmail && password) {
         //Search admin to log in
         const customer = data.customers.find(
-            cu => cu.User === userEmail && cu.Password === password
+            cu => cu.Email === userEmail && bcrypt.compare(cu.Password, password)
             );
         //If no admin found
         if (!customer) {
@@ -40,22 +40,39 @@ exports.loginCustomer = (req, res) => {
  * @param {*} req 
  * @param {*} res 
  */
-exports.registerCustomer = (req, res) => {
+exports.registerCustomer = async (req, res) => {
     const customers = data.customers;
     //Capture customer inputs
     const email = req.body.email;
     const password = req.body.password;
-    
     console.log(email);
+
     //Check if the customer already exist
     const foundCustomer = customers.find(customer =>  customer.Email === email);
     //If the customer does not exist
     if (!foundCustomer) {
         //Register a new customer
         const hashPassword = await bcrypt(password, 10);
+        const newUser = {
+            Email: email,
+            Password: hashPassword,
+            FirstName: req.body.firstname,
+            LastName: req.body.lastname,
+            PhoneNumber: req.body.phone,
+            PostalAddress: req.body.adress,
+            Cart: null,
+            RegistrationDate: Date.now()
+        };
         let file = fs.readFileSync("data.json");
         let myObject = JSON.parse(file);
-        
+        myObject.customers.push(newUser);
+        let newData = JSON.stringify(myObject, null, 2);
+        fs.writeFile("data.json", newData, err => {
+            //error catching
+            if (err) throw err;
+
+            console.log("New data added");
+        });
     } else {
         
     }
