@@ -10,6 +10,8 @@ exports.loginAdmin = (req, res) => {
     //Capture user inputs
     const user = req.body.user;
     const password = req.body.password;
+    
+    console.log(user);
 
     //If inputs are not empty
     if (user && password) {
