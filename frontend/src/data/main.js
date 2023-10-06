@@ -9,7 +9,6 @@ export const Flowers = () => {
         axios.get(apiUrl)
         .then((response) => {
             setFlowers(response.data)
-            console.log(flowers)
         })
         .catch((error) => {
             console.error('Erreur lors de la récupération des données:', error);
@@ -20,11 +19,13 @@ export const Flowers = () => {
 }
 
 export const Flower = ({id}) => {
+    const url = "http://localhost:8080/flower"
     const [flower, setFlower] = useState({})
     useEffect(() => {
-        axios.get(`${apiUrl}/${id}`)
+        axios.get(`${url}/${id}`)
         .then((res) => {
             setFlower(res.data)
+            
         })
         .catch((err) => {
             console.error("Fleur non trouvée", err)
@@ -45,5 +46,22 @@ export function trouverSimilitudes(tableau1, tableau2) {
   
     return similitudes;
   }
+
+export const VerifyLogin = (name, pass) => {
+
+    const api_URL = "http:localhost:8080/admin/login"
+    useEffect(() => {
+        axios.post(api_URL, {
+          user: name,
+          password: pass
+        })
+        .then((res) => {
+          console.log(res)
+        })
+        .catch((err) => {
+          console.error(err)
+        })
+      }, [])
+}
 
   

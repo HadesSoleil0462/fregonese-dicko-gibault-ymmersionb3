@@ -2,7 +2,7 @@
 
 .login {
     height: 100vh;
-    margin-top: 2%;
+    margin-top: 5%;
     margin-bottom: 10%;
 }
 .login-page {
@@ -46,4 +46,7 @@
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
+}
+a {
+  color: inherit;
 }

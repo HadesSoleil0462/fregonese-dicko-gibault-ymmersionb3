@@ -1,11 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import fleur from '../assets/fleur.png'
 import '../styles/Flower.css'
-
+import fall from "../assets/saisons/icons8-printemps-80.png"
+import summer from "../assets/saisons/icons8-feuille-d'érable-48.png"
 const FlowerDetail = () => {
-    const apiUrl = "http://localhost:8080/flowers";
+    const apiUrl = "http://localhost:8080/flower";
     const {id} = useParams()
+    const [season, setSeason] = useState('')
     const [flower, setFlower] = useState({})
     const [quantite, setQuantite] = useState(1)
     const [message, setMessage] = useState('')
@@ -34,13 +37,35 @@ const FlowerDetail = () => {
 
     },[id] )
 
+    const verifySeason = () => {
+        let otherSeason
+        console.log(flower.Season)
+        switch (flower.Season) {
+            case "summer":
+                otherSeason = summer
+                break;
+            case "fall":
+                otherSeason = fall
+                break
+            case "winter":
+                otherSeason = fall
+                break
+            case "spring":
+                otherSeason = fall
+                break
+            default:
+                break;
+        }
+        return otherSeason;
+    }
+
     return <div className="flower-detail">
         <div>
-            <img src={flower.Pic_URL} alt="image de la fleur" className="img" />
+            <img src={flower.Pic_URL} alt="image de la fleur" className="img flower-img" />
             <p>{flower.Tips}</p>
         </div>
         <div className="price">
-            <span>{flower.FlowerName + " " + flower.Type}</span>
+            <span>{flower.FlowerName + " " + flower.Type} <img src={fleur} /></span>
             <span>{flower.Price} €</span>
             <label htmlFor="quantité">Quantité</label>
             <input type="number" onChange={changePrice} value={quantite} name="quantite" id="quantite" />

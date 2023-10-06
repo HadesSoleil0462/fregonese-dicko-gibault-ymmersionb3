@@ -1,4 +1,5 @@
 const data = require("../data.json");
+const fs = require('fs');
 
 /**
  * Get all the flowers.
@@ -21,8 +22,8 @@ exports.getFlowerById = (req, res) => {
     const flowers = data.flowers;
     const flower = flowers.find(f => f.id === id);
 
-    if(!flower){
-        res.status(404).send({message : "Flower not found"});
+    if (!flower) {
+        res.status(404).send({ message: "Flower not found" });
     } else {
         res.status(200).send(flower);
     }
@@ -38,14 +39,31 @@ exports.getFlowersByName = (req, res) => {
     const flowers = data.flowers;
 
     console.log('Nom de la fleur recherchée :', name);
-    
-    const flowerByName = flowers.find(flower => flower.FlowerName === name);
+
+    const flowersByName = flowers.filter(flower => flower.FlowerName === name);
     console.log('Résultat de la recherche :', flowersByName);
-    
-    if(!flowerByName){
-        res.status(404).send({message : "Flowers not found"});
+
+    if (!flowersByName) {
+        res.status(404).send({ message: "Flowers not found" });
     } else {
         res.status(200).send(flowersByName);
+    }
+};
+
+/**
+ * Get a flower by the season.
+ * @param {*} req flower season
+ * @param {*} res flower corresponding to the season
+ */
+exports.getFlowersBySeason = (req, res) => {
+    const season = req.params.season;
+    const flowers = data.flowers;
+    const flower = flowers.filter(f => f.Season === season);
+
+    if (!flower) {
+        res.status(404).send({ message: "Flower not found" });
+    } else {
+        res.status(200).send(flower);
     }
 };
 
@@ -55,27 +73,22 @@ exports.getFlowersByName = (req, res) => {
  * @param {*} res 
  */
 exports.addFlower = (req, res) => {
-    const users = data.admins;
-    const admin = users.find(a => a.User === users.User);
-    const password = req.body.password;
+    const flower = req.body;
+    const maxId = data.flowers.reduce(
+        (previous, current) => (previous && previous.id > current.id) ? previous : current
+    );
+    flower.id = maxId.id + 1;
+    console.log(maxId)
+    var file = fs.readFileSync("data.json");
+    var myObject = JSON.parse(file);
+    myObject.flowers.push(flower);
 
-    //If user is an administrator
-    if (admin && admin.password === password) {
-        const flowers = data.flowers;
-        //Get the max id flower
-        const maxId = flowers.reduce(
-            (previous, current) => (previous && previous.id > current.id) ? previous : current
-        );
-        const flower = {};
-        flower.id = maxId.id + 1;
-        flower.FlowerName = req.body.FlowerName;
-        flower.Type = req.body.Type;
-        flower.Tips = req.body.Tips;
-        flower.Pic_URL = req.body.Pic_URL;
-        flower.Price = Number(req.body.Price);
-        flowers.push(flower);
-        res.status(201).json({message : "Flower successfully created and added"});
-    } else {
-        res.status(511).send({message : "Admin only"});
-    }
+    var newData = JSON.stringify(myObject, null, 2);
+    fs.writeFile("data.json", newData, err => {
+        // error checking
+        if (err) throw err;
+
+        console.log("New data added");
+    });
+    res.json(flower);
 };

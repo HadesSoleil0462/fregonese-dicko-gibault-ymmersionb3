@@ -3,6 +3,9 @@
 .login {
     height: 100vh;
 }
+.error-message {
+  color: red;
+}
 .login-page {
     position: relative;
     max-width: 400px;
@@ -37,11 +40,10 @@
     border-radius: 5px;
   }
   
-  #btn {
-    color: #fff;
+  .btn {
     border: none;
     border-radius: 5px;
     padding: 10px 20px;
     cursor: pointer;
+    color: black;
   }
-  

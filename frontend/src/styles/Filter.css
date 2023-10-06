@@ -9,6 +9,7 @@
     align-items: center;
     gap: 25px;
     margin-top: 7%;
+    flex-wrap: wrap;
 }
 .sort {
     display: flex;

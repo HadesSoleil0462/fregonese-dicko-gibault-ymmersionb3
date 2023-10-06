@@ -33,7 +33,7 @@ function App() {
         </Route>
 
         <Route path='/admin' element={<LoginPage />} >
-          <Route path='/admin/add-flower' element={<AdminPage />} />
+          <Route path='/admin/admin-page' element={<AdminPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
