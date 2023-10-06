@@ -11,7 +11,7 @@ const bcrypt = require("bcrypt");
 exports.loginCustomer = async (req, res) => {
     //Capture user inputs
     const userEmail = req.body.email;
-    const password = await bcrypt(req.body.password, 10);
+    const password = await bcrypt.hash(req.body.password, 10);
 
     //If inputs are not empty
     if (userEmail && password) {
@@ -21,17 +21,15 @@ exports.loginCustomer = async (req, res) => {
             );
         //If no admin found
         if (!customer) {
-            res.status(401).send({message: "Authentication failed: user is not an admin"});
+            res.status(401).send({message: "Authentication failed: user not registered"});
         } else {
             req.session.loggedin = true;
             req.session.username = userEmail;
             //redirect to the home page
             res.redirect("/flowers");
         }
-        res.end();
     } else {
         res.status(401).send("Incorrect username and/or password");
-        res.end();
     }
 };
 
@@ -52,7 +50,7 @@ exports.registerCustomer = async (req, res) => {
     //If the customer does not exist
     if (!foundCustomer) {
         //Register a new customer
-        const hashPassword = await bcrypt(password, 10);
+        const hashPassword = await bcrypt.hash(password, 10);
         const newUser = {
             Email: email,
             Password: hashPassword,
@@ -75,11 +73,9 @@ exports.registerCustomer = async (req, res) => {
             console.log("New data added");
         });
         res.status(200).send({ message: "Customer added sucessfully"});
-        res.end()
 
     } else {
         res.status(400).send({ message : "Customer already exist"});
-        res.end()
     }
 
 };
