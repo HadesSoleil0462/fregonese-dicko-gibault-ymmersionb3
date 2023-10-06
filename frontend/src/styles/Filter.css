@@ -1,0 +1,30 @@
+.filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 7%;
+}
+.filter div button {
+    padding-right: 18px;
+    padding-left: 18px;
+}
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+}
+.filter div select {
+    padding: 8px;
+}
+.flowers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    align-items: stretch;
+    margin-left: 8%;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
