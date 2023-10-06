@@ -63,6 +63,7 @@ exports.registerCustomer = async (req, res) => {
             Cart: null,
             RegistrationDate: Date.now()
         };
+        console.log(newUser);
         let file = fs.readFileSync("data.json");
         let myObject = JSON.parse(file);
         myObject.customers.push(newUser);
@@ -73,8 +74,12 @@ exports.registerCustomer = async (req, res) => {
 
             console.log("New data added");
         });
+        res.status(200).send({ message: "Customer added sucessfully"});
+        res.end()
+
     } else {
-        
+        res.status(400).send({ message : "Customer already exist"});
+        res.end()
     }
 
 };
