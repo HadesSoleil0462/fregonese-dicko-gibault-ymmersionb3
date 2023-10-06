@@ -6,5 +6,8 @@ const controllers = require("../controllers/admin");
 router.post("/admin/login", controllers.loginAdmin);
 
 router.post("/addflowers", controllers.addFlower);
+router.get("/admins", (req, res) => {
+    controllers.admins(req, res)
+})
 
 module.exports = router;

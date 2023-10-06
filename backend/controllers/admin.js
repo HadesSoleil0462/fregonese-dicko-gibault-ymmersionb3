@@ -6,6 +6,12 @@ const data = require("../data.json");
  * @param {*} req admin user and password
  * @param {*} res 
  */
+
+exports.admins = (req, res) => {
+    const admins = data.admins;
+
+    res.send(admins);
+}
 exports.loginAdmin = (req, res) => {
     //Capture user inputs
     const user = req.body.user;

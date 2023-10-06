@@ -48,7 +48,6 @@ export function trouverSimilitudes(tableau1, tableau2) {
   }
 
 export const VerifyLogin = (name, pass) => {
-
     const api_URL = "http:localhost:8080/admin/login"
     useEffect(() => {
         axios.post(api_URL, {
@@ -62,6 +61,23 @@ export const VerifyLogin = (name, pass) => {
           console.error(err)
         })
       }, [])
+}
+
+export const Admins = () => {
+  const [admins, setAdmins] = useState([])
+  const url = "http://localhost:8080/admins"
+  useEffect(() => {
+    axios.get(url)
+    .then((res) => {
+      setAdmins(res.data)
+    })
+    .catch((err) => {
+      console.error("ici")
+    })
+  },[])
+  //console.log(admins)
+
+  return admins
 }
 
   

@@ -12,3 +12,10 @@
     justify-content: center;
     align-items: center;
 }
+.flower-card {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

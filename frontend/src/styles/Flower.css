@@ -19,7 +19,7 @@
 .price input {
     padding: 7px;
 }
-.price span {
+.price h3 {
     text-transform: capitalize;
     font-weight: bold;
 }
