@@ -17,6 +17,6 @@ router.get("/flowers/:name", controllers.getFlowersByName);
 router.get("/flowers/seasons/:season", controllers.getFlowersBySeason);
 
 //Route to add one flower to the roster.
-router.post("/flowers", controllers.addFlower);
+router.post("/flower", controllers.addFlower);
 
 module.exports = router;
