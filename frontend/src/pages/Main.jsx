@@ -16,7 +16,7 @@ const Main = () => {
                 </p>
                 <Link to='/flowers-store/store'><button>Visiter notre boutique</button></Link>
             </div>
-            <img src={flower} alt='lilas' />
+            <img src={flower} className='img' alt='lilas' />
         </section>
         <section className='horaires'>
             <h3>Horaires d'ouverture</h3>

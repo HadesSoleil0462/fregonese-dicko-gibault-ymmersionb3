@@ -68,11 +68,11 @@ const Filter = () => {
     }
 
     // Tri et mise à jour de la liste de fleurs filtrée
-    //const sortedAndFilteredFlowers = sortedFlowers().filter((flower) =>
-     // filteredByPrice.includes(flower) && filteredByType.includes(flower) && filteredBySeason.includes(flower)
-    //);
+    const sortedAndFilteredFlowers = sortedFlowers().filter((flower) =>
+      filteredByPrice.includes(flower) && filteredByType.includes(flower) && filteredBySeason.includes(flower)
+    );
 
-    setFilteredFlowers(filteredBySeason);
+    setFilteredFlowers(sortedAndFilteredFlowers);
   }, [flowers, priceFilter, typeFilter, sortOrder, seasonFilter]);
 
   return (

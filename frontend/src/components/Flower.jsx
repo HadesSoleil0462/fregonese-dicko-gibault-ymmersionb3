@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import fleur from '../assets/fleur.png'
 import '../styles/Flower.css'
 import fall from "../assets/saisons/icons8-printemps-80.png"
 import summer from "../assets/saisons/icons8-feuille-d'érable-48.png"
@@ -33,22 +34,30 @@ const FlowerDetail = () => {
         .catch((err) => {
             console.error("Fleur non trouvée", err)
         })
-        const verifySeason = () => {
-            console.log(flower.Season)
-            switch (flower.Season) {
-                case "summer":
-                    setSeason(summer)
-                    break;
-                case "fall":
-                    setSeason(fall)
-                    break
-                default:
-                    break;
-            }
-        }
-        verifySeason()
 
     },[id] )
+
+    const verifySeason = () => {
+        let otherSeason
+        console.log(flower.Season)
+        switch (flower.Season) {
+            case "summer":
+                otherSeason = summer
+                break;
+            case "fall":
+                otherSeason = fall
+                break
+            case "winter":
+                otherSeason = fall
+                break
+            case "spring":
+                otherSeason = fall
+                break
+            default:
+                break;
+        }
+        return otherSeason;
+    }
 
     return <div className="flower-detail">
         <div>
@@ -56,8 +65,7 @@ const FlowerDetail = () => {
             <p>{flower.Tips}</p>
         </div>
         <div className="price">
-            <span>{flower.FlowerName + " " + flower.Type}</span>
-            <span><img src={season} alt="season" /></span>
+            <span>{flower.FlowerName + " " + flower.Type} <img src={fleur} /></span>
             <span>{flower.Price} €</span>
             <label htmlFor="quantité">Quantité</label>
             <input type="number" onChange={changePrice} value={quantite} name="quantite" id="quantite" />

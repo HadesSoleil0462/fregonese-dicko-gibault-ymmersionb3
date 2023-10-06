@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import '../styles/Connection.css'
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { VerifyLogin, verifyLogin } from '../data/main';
 
 const LoginPage = () => {
-  const api_URL = "http:localhost:8080/admin/login"
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null); // État pour gérer les erreurs
@@ -16,25 +16,18 @@ const LoginPage = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-
-  useEffect(() => {
-    axios.post(api_URL, {
-      user: email,
-      password: password
-    })
-    .then((res) => {
-      console.log(res)
-    })
-    .catch((err) => {
-      console.error(err)
-    })
-  }, [])
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    setError(true)
+    VerifyLogin(email, password)
+    console.log("Login : ", email)
+  }
   return (
     <div className='login'>
         <div className="login-page">
       <h2>Connexion</h2>
       {error && <div className="error-message">{error}</div>}
-      <form action='/admin/login' method='post'>
+      <form>
         <div className="form-group">
           <label htmlFor="email">Username :</label>
           <input
@@ -55,7 +48,7 @@ const LoginPage = () => {
             required
           />
         </div>
-        <a href="/admin/add-flower" className='btn'><button type='submit'>Soumettre</button></a>
+        <a  className='btn'><button type='submit' onSubmit={handleSubmit} >Soumettre</button></a>
       </form>
     </div>
     </div>
