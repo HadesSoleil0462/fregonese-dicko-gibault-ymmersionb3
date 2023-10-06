@@ -3,6 +3,9 @@
 .login {
     height: 100vh;
 }
+.error-message {
+  color: red;
+}
 .login-page {
     position: relative;
     max-width: 400px;
