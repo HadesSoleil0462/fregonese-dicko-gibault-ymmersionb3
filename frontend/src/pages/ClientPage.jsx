@@ -44,7 +44,7 @@ const ClientPage = () => {
           />
         </div>
         <div>
-        <a href='/flowers-store/inscription'>Pas encore inscrit ? Inscrivez-vous</a>
+        <a href='/flowers-store/inscription'><p>Pas encore inscrit ? Inscrivez-vous</p></a>
         </div>
         <button id='btn'>
         Soumettre

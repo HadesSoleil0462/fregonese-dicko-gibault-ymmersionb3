@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import '../styles/Connection.css'
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 const LoginPage = () => {
+  const api_URL = "http:localhost:8080/admin/login"
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -14,6 +16,16 @@ const LoginPage = () => {
     setPassword(e.target.value);
   };
 
+  useEffect(() => {
+    axios.post(api_URL,{
+      user: email,
+      password: password
+    }).then((res) => {
+      console.log(res)
+    }).catch((err) => {
+      console.error(err)
+    })
+  })
   return (
     <div className='login'>
         <div className="login-page">
