@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import "../styles/Filter.css";
 import FlowerCard from "./Flower-card";
-import CartLmj from "./CartLmj";
-import { Flowers } from "../data/main";
+import { Flowers, trouverSimilitudes } from "../data/main";
+import axios from "axios";
 
 const Filter = () => {
   const [sortOrder, setSortOrder] = useState("croissant");
   const [priceFilter, setPriceFilter] = useState("Tous les prix");
   const [typeFilter, setTypeFilter] = useState("Tous les types");
+  const [seasonFilter, setSeasonFilter] = useState("Toutes les saisons")
   const [filteredFlowers, setFilteredFlowers] = useState([]);
   const flowers = Flowers();
 
@@ -29,6 +30,9 @@ const Filter = () => {
   const changePrice = (e) => {
     setPriceFilter(e.target.value);
   };
+  const changeSeason = (e) => {
+    setSeasonFilter(e.target.value)
+  }
 
   const changeType = (e) => {
     setTypeFilter(e.target.value);
@@ -50,16 +54,26 @@ const Filter = () => {
     let filteredByType = filteredByPrice;
     if (typeFilter !== "Tous les types") {
       filteredByType = filteredByPrice.filter((flower) =>
-        flower.Type.toLowerCase().includes(typeFilter.toLowerCase())
+        flower.FlowerName.toLowerCase().includes(typeFilter.toLowerCase())
       );
     }
 
+    //Filtrer par saison
+    let filteredBySeason = filteredByType;
+    if (seasonFilter !== "Toutes les saisons") {
+      filteredBySeason = filteredByType.filter((flower) =>
+        flower.Season.toLowerCase().includes(seasonFilter.toLowerCase())
+      );
+ 
+    }
+
     // Tri et mise à jour de la liste de fleurs filtrée
-    const sortedAndFilteredFlowers = sortedFlowers().filter((flower) =>
-      filteredByType.includes(flower) && filteredByPrice.includes(flower)
-    );
-    setFilteredFlowers(sortedAndFilteredFlowers);
-  }, [flowers, priceFilter, typeFilter, sortOrder]);
+    //const sortedAndFilteredFlowers = sortedFlowers().filter((flower) =>
+     // filteredByPrice.includes(flower) && filteredByType.includes(flower) && filteredBySeason.includes(flower)
+    //);
+
+    setFilteredFlowers(filteredBySeason);
+  }, [flowers, priceFilter, typeFilter, sortOrder, seasonFilter]);
 
   return (
     <div>
@@ -97,10 +111,9 @@ const Filter = () => {
               <option defaultChecked value="Tous les prix">
                 Tous les prix
               </option>
-              <option value="0-10">0€ - 10€</option>
               <option value="10-20">10€ - 20€</option>
-              <option value="20-30">20€ - 30€</option>
-              <option value="30-40">30€ - 40€</option>
+              <option value="21-30">21€ - 30€</option>
+              <option value="31-40">31€ - 40€</option>
             </select>
           </div>
           <div className="filters">
@@ -119,6 +132,23 @@ const Filter = () => {
               <option value="rose">Rose</option>
               <option value="orchidée">Orchidée</option>
               <option value="lys">Lys</option>
+            </select>
+          </div>
+          <div className="filters">
+            <label htmlFor="season">Saisons</label>
+            <select
+              onChange={changeSeason}
+              value={seasonFilter}
+              name="season"
+              id="season"
+            >
+              <option defaultChecked value="Toutes les saisons">
+                Tous les types
+              </option>
+              <option value="summer">Ete</option>
+              <option value="fall">Automne</option>
+              <option value="winter">Hiver</option>
+              <option value="spring">Printemps</option>
             </select>
           </div>
         </div>

@@ -9,7 +9,7 @@ export const Flowers = () => {
         axios.get(apiUrl)
         .then((response) => {
             setFlowers(response.data)
-            console.log(flowers)
+            console.log("Flowers : ",response.data)
         })
         .catch((error) => {
             console.error('Erreur lors de la récupération des données:', error);
@@ -20,11 +20,13 @@ export const Flowers = () => {
 }
 
 export const Flower = ({id}) => {
+    const url = "http://localhost:8080/flower"
     const [flower, setFlower] = useState({})
     useEffect(() => {
-        axios.get(`${apiUrl}/${id}`)
+        axios.get(`${url}/${id}`)
         .then((res) => {
             setFlower(res.data)
+            
         })
         .catch((err) => {
             console.error("Fleur non trouvée", err)
