@@ -11,6 +11,8 @@ exports.loginAdmin = (req, res) => {
     const user = req.body.user;
     const password = req.body.password;
 
+    console.log(user);
+
     //If inputs are not empty
     if (user && password) {
         //Search admin to log in
@@ -26,10 +28,8 @@ exports.loginAdmin = (req, res) => {
             //redirect to the page where an admin can add an article to the roster
             res.redirect("/addflowers");
         }
-        res.end();
     } else {
         res.status(401).send("Incorrect username and/or password");
-        res.end();
     }
 };
 
@@ -59,7 +59,6 @@ exports.addFlower = (req, res) => {
         flowers.push(flower);
     } else {
         res.status(401).send("Unauthorized: not logged in as an admin");
-        res.end();
     }
     
 }
