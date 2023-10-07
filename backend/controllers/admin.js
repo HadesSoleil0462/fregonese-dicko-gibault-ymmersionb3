@@ -11,7 +11,7 @@ exports.loginAdmin = (req, res) => {
     const user = req.body.user;
     const password = req.body.password;
 
-    console.log(user);
+    console.log(req.body);
 
     //If inputs are not empty
     if (user && password) {
@@ -25,40 +25,9 @@ exports.loginAdmin = (req, res) => {
         } else {
             req.session.loggedin = true;
             req.session.username = user;
-            //redirect to the page where an admin can add an article to the roster
-            res.redirect("/addflowers");
+            res.status(200).send({ message : "Admin logged successfully" });
         }
     } else {
         res.status(401).send("Incorrect username and/or password");
     }
 };
-
-/**
- * Add a flower to the roster
- * @param {*} req 
- * @param {*} res 
- */
-exports.addFlower = (req, res) => {
-    //check if the admin is logged in
-    const isLogged = req.session.loggedin;
-
-    if (isLogged) {
-        const flowers = data.flowers;
-        const maxId = flowers.reduce(
-            (previous, current) => (previous && previous.id > current.id) ? previous : current
-        );
-        const flower = {};
-        flower.id = maxId.id + 1;
-        flower.FlowerName = req.body.flowername;
-        flower.Type = req.body.type;
-        flower.Season = req.body.season;
-        flower.Stock = Number(req.body.stock);
-        flower.Tips = req.body.tips;
-        flower.Pic_URL = req.body.pic_url;
-        flower.Price = Number(req.body.price);
-        flowers.push(flower);
-    } else {
-        res.status(401).send("Unauthorized: not logged in as an admin");
-    }
-    
-}
