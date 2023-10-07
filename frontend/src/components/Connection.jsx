@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Connection.css'
 import axios from 'axios';
+import { Admins, VerifyLogin, verifyLogin } from '../data/main';
 import { Link } from 'react-router-dom';
-import { VerifyLogin, verifyLogin } from '../data/main';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const admins = Admins()
   const [error, setError] = useState(null); // État pour gérer les erreurs
 
   const handleEmailChange = (e) => {
@@ -18,16 +19,20 @@ const LoginPage = () => {
   };
   const handleSubmit = (e) => {
     e.preventDefault()
-    setError(true)
-    VerifyLogin(email, password)
-    console.log("Login : ", email)
+    const admin = admins.find(e => {
+      return e.User === email
+    })
+    if(admin != undefined){
+      return <Link to="/flowers-store"></Link>
+    }
+    console.log(admin)
   }
   return (
     <div className='login'>
         <div className="login-page">
       <h2>Connexion</h2>
       {error && <div className="error-message">{error}</div>}
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="form-group">
           <label htmlFor="email">Username :</label>
           <input
@@ -48,7 +53,7 @@ const LoginPage = () => {
             required
           />
         </div>
-        <a  className='btn'><button type='submit' onSubmit={handleSubmit} >Soumettre</button></a>
+        <button type='submit' >Soumettre</button>
       </form>
     </div>
     </div>

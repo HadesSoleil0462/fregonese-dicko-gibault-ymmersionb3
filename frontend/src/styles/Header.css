@@ -1,0 +1,45 @@
+
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    gap: 18%;
+    margin: 0;
+}
+header nav ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+header nav ul li {
+    list-style: none;
+}
+.panier {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-right: 25px;
+}
+#logo {
+    color: black;
+}
+.panier span {
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.panier img {
+    width: 45px;
+}
+
+header nav ul li a {
+    text-decoration: none;
+    color: inherit;
+}
+header nav ul li a:hover {
+    text-decoration: underline;
+}

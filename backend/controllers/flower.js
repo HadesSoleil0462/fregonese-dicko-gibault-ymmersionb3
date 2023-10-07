@@ -68,27 +68,39 @@ exports.getFlowersBySeason = (req, res) => {
 };
 
 /**
- * Add one flower to the roster.
+ * Add one flower to the roster if the admin is logged.
  * @param {*} req 
  * @param {*} res 
  */
 exports.addFlower = (req, res) => {
-    const flower = req.body;
-    const maxId = data.flowers.reduce(
-        (previous, current) => (previous && previous.id > current.id) ? previous : current
+
+    //check if the admin is logged in
+    const adminLogged = data.admins.find(
+        admin => admin.User === req.session.username
     );
-    flower.id = maxId.id + 1;
-    console.log(maxId)
-    var file = fs.readFileSync("data.json");
-    var myObject = JSON.parse(file);
-    myObject.flowers.push(flower);
+    const adminIsLogged = req.session.loggedin && adminLogged;
+    
+    //If the admin is logged the add a flower to the database
+    if (adminIsLogged) {
+        const flower = req.body;
+        const maxId = data.flowers.reduce(
+            (previous, current) => (previous && previous.id > current.id) ? previous : current
+        );
+        flower.id = maxId.id + 1;
+        console.log(maxId)
+        var file = fs.readFileSync("data.json");
+        var myObject = JSON.parse(file);
+        myObject.flowers.push(flower);
 
-    var newData = JSON.stringify(myObject, null, 2);
-    fs.writeFile("data.json", newData, err => {
-        // error checking
-        if (err) throw err;
+        var newData = JSON.stringify(myObject, null, 2);
+        fs.writeFile("data.json", newData, err => {
+            // error checking
+            if (err) throw err;
 
-        console.log("New data added");
-    });
-    res.json(flower);
+            console.log("New data added");
+        });
+        res.json(flower);
+    } else {
+        res.status(401).send({message : "Unauthorized: not logged or not an admin"});
+    }
 };

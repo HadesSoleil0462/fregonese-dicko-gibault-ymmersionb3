@@ -1,0 +1,73 @@
+.main {
+    margin-top: 70px;
+}
+.main .main-img {
+    height: 100vh;
+    background: center / cover url("../assets/caroussel/roses-2191636_1280.jpg") no-repeat;
+}
+.main .main-img .main-button {
+    background: #F1D145;
+        border-radius: 10px;
+        padding: 10px 20px;
+        color: #fff;
+        text-transform: uppercase;
+}
+.main img {
+    width: 100%;
+    height: 110vh;
+    margin: 15px;
+}
+
+.about {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background-color: antiquewhite;
+    margin: 20px;
+    margin-top: 60px;
+}
+.about img {
+    width: 50%;
+}
+.about div {
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+.about div p {
+    text-align: justify;
+}
+.about div button {
+    margin-top: 20px;
+}
+.horaires {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 50px 0;
+    text-align: justify;
+}
+.caroussel {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-bottom: 10%;
+}
+#flowers {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+}
+.caroussel img {
+    width: 550px;
+    height: 550px;
+}

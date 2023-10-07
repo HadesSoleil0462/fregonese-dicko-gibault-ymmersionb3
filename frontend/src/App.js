@@ -11,8 +11,6 @@ import LoginPage from './components/Connection';
 import FlowerDetail from './components/Flower';
 import AdminPage from './pages/AdminPage';
 import ClientPage from './pages/ClientPage';
-import About from './pages/About';
-import FlowerDetail from './components/Flower';
 import Inscription from './pages/Inscription';
 function App() {
 

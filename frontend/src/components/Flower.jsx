@@ -65,7 +65,7 @@ const FlowerDetail = () => {
             <p>{flower.Tips}</p>
         </div>
         <div className="price">
-            <span>{flower.FlowerName + " " + flower.Type} <img src={fleur} /></span>
+            <h3>{flower.FlowerName + " " + flower.Type} <img src={fleur} /></h3>
             <span>{flower.Price} €</span>
             <label htmlFor="quantité">Quantité</label>
             <input type="number" onChange={changePrice} value={quantite} name="quantite" id="quantite" />
