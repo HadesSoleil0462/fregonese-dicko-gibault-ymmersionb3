@@ -17,20 +17,24 @@ exports.loginCustomer = async (req, res) => {
     if (userEmail && password) {
         //Search customer to log in
         const customer = data.customers.find(
-            cu => cu.Email === userEmail && bcrypt.compare(cu.Password, password)
+            cu => cu.Email === userEmail
             );
         //If no customer found
         if (!customer) {
             res.status(401).send({message: "Authentication failed: user not registered"});
         } else {
-            req.session.loggedin = true;
-            req.session.username = userEmail;
-            console.log("logged in");
-            res.status(200).send({ message: "Customer logged successfully" });
-            res.redirect("/flowers");
+            const passwordMatch = await bcrypt.compare(customer.Password, password);
+            if (passwordMatch) {
+                req.session.loggedin = true;
+                req.session.username = userEmail;
+                console.log("logged in");
+                res.status(200).send({ message: "Customer logged successfully" });
+            } else {
+                res.status(401).send({ message : "Incorrect password" });
+            }
         }
     } else {
-        res.status(401).send("Incorrect username and/or password");
+        res.status(401).send("Incorrect username");
     }
 };
 
