@@ -1,0 +1,63 @@
+.list{
+    display: flex;
+    flex-direction: row;
+}
+.filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    margin-top: 7%;
+    flex-wrap: wrap;
+}
+.sort {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+.sort .sort-attributes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.filter div button {
+    padding-right: 18px;
+    padding-left: 18px;
+}
+.filters {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 17px;
+}
+.filter div select {
+    padding: 8px;
+}
+.flowers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    align-items: stretch;
+    margin-left: 8%;
+    margin-top: 10%;
+    margin-bottom: 15%;
+}
+@media (max-width: 1200px) {
+    .flowers, .list div {
+        grid-template-columns: repeat(2, 1fr); /* Deux colonnes pour les écrans moyens */
+        margin-left: 50px;
+        margin-right: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .flowers, .list div {
+        grid-template-columns: 1fr; /* Une seule colonne pour les petits écrans */
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}

@@ -1,0 +1,21 @@
+.flower-card img{
+    width: 250px;
+    height: 210px;
+}
+#flower-card-img{
+    width: 24px;
+    height: 24px;
+}
+#flower-title {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.flower-card {
+    padding: 15px;
+    border-radius: 5px;
+    background-color: antiquewhite;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}

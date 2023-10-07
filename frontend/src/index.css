@@ -1,0 +1,37 @@
+@font-face {
+    font-family: Poppins;
+    src: url("./assets/Poppins/Poppins-Regular.ttf");
+}
+body {
+    font-family: Poppins, Montserrat, sans-serif;
+    color: black;
+    margin: 0;
+    background-color: #FFF;
+}
+p {
+    font-size: 16px;
+}
+
+#container{
+    position: relative;
+    min-height: 100vh;
+}
+
+.blank-space{
+    width: 100%;
+    min-height: 155px;
+}
+button {
+    color: white;
+    background-color: #5A945B;
+    border: #5A945B solid 1px;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 17px;
+    cursor: pointer;
+    transform: scale(1);
+    transition: transform 0.3s ease-in-out;
+}
+button:hover {
+    transform: scale(1.05);
+}

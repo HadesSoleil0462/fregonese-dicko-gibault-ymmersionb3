@@ -1,0 +1,11 @@
+.cart-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 5%;
+    text-align: center;
+}
+.cart-item h3 {
+    text-transform: capitalize;
+}
