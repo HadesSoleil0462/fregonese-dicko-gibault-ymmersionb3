@@ -42,8 +42,8 @@ exports.loginCustomer = async (req, res) => {
 exports.registerCustomer = async (req, res) => {
     const customers = data.customers;
     //Capture customer inputs
-    const email = req.body.email;
-    const password = req.body.password;
+    const email = req.body.Email;
+    const password = req.body.Password;
     console.log(email);
 
     //Check if the customer already exist
@@ -52,16 +52,10 @@ exports.registerCustomer = async (req, res) => {
     if (!foundCustomer) {
         //Register a new customer
         const hashPassword = await bcrypt.hash(password, 10);
-        const newUser = {
-            Email: email,
-            Password: hashPassword,
-            FirstName: req.body.firstname,
-            LastName: req.body.lastname,
-            PhoneNumber: req.body.phone,
-            PostalAddress: req.body.adress,
-            Cart: null,
-            RegistrationDate: Date.now()
-        };
+        const newUser = req.body;
+        newUser.Password = hashPassword;
+        newUser.Cart = null;
+        newUser.RegistrationDate = new Date().toISOString().split('T')[0];
         console.log(newUser);
         let file = fs.readFileSync("data.json");
         let myObject = JSON.parse(file);
@@ -71,7 +65,7 @@ exports.registerCustomer = async (req, res) => {
             //error catching
             if (err) throw err;
 
-            console.log("New data added");
+            console.log("New customer added");
         });
         res.status(200).send({ message: "Customer added sucessfully"});
 
