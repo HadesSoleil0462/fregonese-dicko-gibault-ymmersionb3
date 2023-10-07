@@ -30,11 +30,11 @@ exports.loginCustomer = async (req, res) => {
                 console.log("logged in");
                 res.status(200).send({ message: "Customer logged successfully" });
             } else {
-                res.status(401).send({ message : "Incorrect password" });
+                res.status(401).send({ message : "Authentication failed: incorrect password" });
             }
         }
     } else {
-        res.status(401).send("Incorrect username");
+        res.status(401).send("Authentication failed: empty fields");
     }
 };
 
