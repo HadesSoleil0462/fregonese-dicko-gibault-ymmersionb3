@@ -15,17 +15,18 @@ exports.loginCustomer = async (req, res) => {
 
     //If inputs are not empty
     if (userEmail && password) {
-        //Search admin to log in
+        //Search customer to log in
         const customer = data.customers.find(
             cu => cu.Email === userEmail && bcrypt.compare(cu.Password, password)
             );
-        //If no admin found
+        //If no customer found
         if (!customer) {
             res.status(401).send({message: "Authentication failed: user not registered"});
         } else {
             req.session.loggedin = true;
             req.session.username = userEmail;
-            //redirect to the home page
+            console.log("logged in");
+            res.status(200).send({ message: "Customer logged successfully" });
             res.redirect("/flowers");
         }
     } else {
