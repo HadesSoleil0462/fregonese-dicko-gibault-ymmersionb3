@@ -9,3 +9,6 @@
 .cart-item h3 {
     text-transform: capitalize;
 }
+td{
+    margin-top: 25px;
+}

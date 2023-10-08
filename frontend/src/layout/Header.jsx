@@ -33,13 +33,13 @@ const Header = () => {
         <header>
             <nav>
                 <ul>
-                    <li><Link to='/flowers-store/store'>Boutique</Link></li>
-                    <li><Link to='/flowers-store/about'>Notre histoire</Link></li>
-                    <li><Link to='/flowers-store/contact'>Nous contacter</Link></li>
-                    <li><Link to='/flowers-store/cart'>Panier{`(${localStorage.length})`}</Link></li>
+                    <li className='link'><Link to='/flowers-store/store'>Boutique</Link></li>
+                    <li className='link'><Link to='/flowers-store/about'>Notre histoire</Link></li>
+                    <li className='link'><Link to='/flowers-store/contact'>Nous contacter</Link></li>
+                    <li className='link'><Link to='/flowers-store/cart'>Panier{`(${localStorage.length})`}</Link></li>
                 </ul>
             </nav>
-            <Link to='/'><h1 id='logo'>FLOWERS STORE</h1></Link>
+            <h1 id='logo'><Link to='/'>FLOWERS STORE</Link></h1>
             {/* <div className='panier'>
                 <Link to='/cart' >
                     <img src={panier} alt='panier' onClick={openCart}/>

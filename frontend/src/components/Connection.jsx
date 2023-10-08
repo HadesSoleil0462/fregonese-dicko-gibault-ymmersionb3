@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/Connection.css'
 import axios from 'axios';
-import { Admins, VerifyLogin, verifyLogin } from '../data/main';
-import { Link } from 'react-router-dom';
+import { Admins } from '../data/main';
+import { useNavigate } from 'react-router-dom';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const admins = Admins()
   const [error, setError] = useState(null); // État pour gérer les erreurs
-
+  const navigate = useNavigate()
   const handleEmailChange = (e) => {
     setEmail(e.target.value);
   };
@@ -17,15 +17,20 @@ const LoginPage = () => {
   const handlePasswordChange = (e) => {
     setPassword(e.target.value);
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    const admin = admins.find(e => {
-      return e.User === email
-    })
-    if(admin != undefined){
-      return <Link to="/flowers-store"></Link>
+    try {
+      const response = await axios.post("http://localhost:8080/admin/login", {
+        user: email,
+        password: password
+      })
+      console.log(response.data)
+      setTimeout(() => {
+        navigate("/admin/page")
+      }, 3000)
+    } catch (error) {
+      console.error(error)
     }
-    console.log(admin)
   }
   return (
     <div className='login'>

@@ -32,7 +32,7 @@ exports.loginAdmin = (req, res) => {
             req.session.loggedin = true;
             req.session.username = user;
             //redirect to the page where an admin can add an article to the roster
-            res.redirect("/addflowers");
+            res.redirect("/flowers");
         }
     } else {
         res.status(401).send("Incorrect username and/or password");

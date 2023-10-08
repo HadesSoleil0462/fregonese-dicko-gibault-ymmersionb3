@@ -8,12 +8,12 @@ const CartView = ({title, price}) => {
     window.location.reload()
 }
     return <div>
-        <li className="cart-item">
-            <h3>{title} <img id='flower-card-img' src={fall} /></h3>
-            <em>Total : {price} €</em>
-          <button className="remove-item" onClick={removeItem}>Supprimer</button>
-        </li>
-    </div>
+      <li className="cart-item">
+        <h3>{title} <img id='flower-card-img' src={fall} /></h3>
+        <em>Total : {parseFloat(price).toFixed(2)} €</em>
+      <button className="remove-item" onClick={removeItem}>Supprimer</button>
+    </li>
+</div>
 
 }
 export default CartView;

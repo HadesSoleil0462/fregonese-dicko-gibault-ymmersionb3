@@ -11,6 +11,7 @@ const Filter = () => {
   const [seasonFilter, setSeasonFilter] = useState("Toutes les saisons")
   const [filteredFlowers, setFilteredFlowers] = useState([]);
   const flowers = Flowers();
+  console.log(flowers)
 
   // Fonction pour trier les fleurs
   const sortedFlowers = () => {

@@ -28,10 +28,8 @@ function App() {
           <Route path='/flowers-store/*' element={<Error />} />
           <Route path='/flowers-store/inscription' element={<Inscription />} />
           <Route path='/flowers-store/connexion' element={<ClientPage />} />
-        </Route>
-
-        <Route path='/admin' element={<LoginPage />} >
-          <Route path='/admin/admin-page' element={<AdminPage />} />
+          <Route path='/admin' element={<LoginPage />} />
+          <Route path='/admin/page' element={<AdminPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

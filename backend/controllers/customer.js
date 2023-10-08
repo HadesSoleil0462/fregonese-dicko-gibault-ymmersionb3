@@ -26,7 +26,7 @@ exports.loginCustomer = async (req, res) => {
             req.session.loggedin = true;
             req.session.username = userEmail;
             //redirect to the home page
-            res.redirect("/flowers");
+            res.redirect("http://localhost:3000");
         }
     } else {
         res.status(401).send("Incorrect username and/or password");

@@ -23,7 +23,7 @@ const FlowerDetail = () => {
     const addCart = () => {
         localStorage.setItem(`${flower.FlowerName} ${flower.Type}`, `${quantite * flower.Price}`)
         setMessage(`Vous avez ajouté ${quantite} ${flower.FlowerName} ${flower.Type} `)
-        window.location.reload()
+        //window.location.reload()
     }
 
      useEffect(() => {

@@ -22,15 +22,15 @@ const Cart = ({ cart }) => {
 }, [])
   return <div className="cart">
     <h2>Panier</h2>
-    <ul>
-    {
-      cartItems.map(item => {
-        return <CartView key={item.name + item.value} title={item.name} price={item.value} />
-      })
-    }
-    </ul>
+    <div>
+      {
+        cartItems.map(item => {
+          return <CartView key={item.name + item.value} title={item.name} price={item.value} />
+        })
+      }
+    </div>
     <div className="total">
-      <h3>Total du panier : {total} € </h3>
+      <h3>Total du panier : {parseFloat(total).toFixed(2)} € </h3>
     </div>
     <div className="total">
       <Link to="/flowers-store/connexion"><button type="submit">Valider</button></Link>
